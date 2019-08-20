@@ -14,7 +14,7 @@ namespace CICDAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return new string[] { "Sanjay", "Bhardwaj " };
+            return new string[] { "Sanjay", "Bhardwaj" };
         }
 
         // GET api/values/5
