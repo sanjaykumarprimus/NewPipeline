@@ -16,8 +16,13 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- task: CopyFiles@2
+- script: dotnet restore
+- task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
-    SourceFolder: '$(agent.builddirectory)/s/CICDAPI/bin/Release/netcoreapp2.1'
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)/'
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+
+
+  
