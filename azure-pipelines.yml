@@ -1,4 +1,5 @@
 # ASP.NET Core
+
 # Build and test ASP.NET Core projects targeting .NET Core.
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
@@ -15,4 +16,8 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-- task: PublishBuildArtifacts@1
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(agent.builddirectory)/s/CICDAPI/bin/Release/netcoreapp2.1'
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)/'
