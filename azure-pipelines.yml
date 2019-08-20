@@ -18,6 +18,6 @@ steps:
   displayName: 'dotnet build $(buildConfiguration)'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(agent.builddirectory)/s/bin/Release/netcoreapp2.1'
+    SourceFolder: '$(agent.builddirectory)/s/CICDAPI/bin/Release/netcoreapp2.1'
     Contents: '**'
     TargetFolder: '$(build.artifactstagingdirectory)/'
