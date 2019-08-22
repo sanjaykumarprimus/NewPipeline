@@ -14,7 +14,7 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet publish -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/CICDAPI
   displayName: 'dotnet build $(buildConfiguration)'
 
 
