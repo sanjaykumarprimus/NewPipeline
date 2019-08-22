@@ -17,6 +17,13 @@ steps:
 - script: dotnet publish -c $(buildConfiguration) -o $(Build.ArtifactStagingDirectory)/CICDAPI
   displayName: 'dotnet build $(buildConfiguration)'
 
+- task: PublishBuildArtifacts@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+- task: CopyFiles@2
+  inputs:
+    targetFolder: '$(Build.ArtifactStagingDirectory)'    
+- task: PublishBuildArtifacts@1
+
 
 
 
